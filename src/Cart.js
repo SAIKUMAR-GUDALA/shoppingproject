@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { UserContext } from "./App"; // Import the context
 import { useNavigate } from "react-router-dom";
+import App from "./App";
 
 
 export default function Cart() {

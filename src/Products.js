@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "./App"; // Import the context
+import App   from "./App";
 
 export default function Products() {
   const item = [
@@ -13,7 +14,7 @@ export default function Products() {
     { name: "Product 8", desc: "This is a dummy description", price: 60, img: <img className="App-img" src="https://images.pexels.com/photos/1187317/pexels-photo-1187317.jpeg?auto=compress&cs=tinysrgb&w=600"></img>},
   ];
   
-  const [products, setProducts] = useState(item);
+  const [product, setProduct] = useState(item);
   const { cart, setCart } = useContext(UserContext); // Access cart from context
    
   const addProduct = (item) => {
@@ -35,17 +36,16 @@ export default function Products() {
   const deleteProduct = (value) => {
     setCart(cart.filter((product) => product.name !== value.name));
   };
-
   return (
     <div className="App-products">
-      {products.map((value, index) => (
+      {product.map((value, index) => (
         <div className="App-item" key={index}>
           {value.img}
           <h3>{value.name}</h3>
           <p>{value.desc}</p>
           <div className='App-cost'>
             <h4>{value.price}</h4>
-            <button onClick={() => addProduct(value)}>Add</button>
+            <button onClick={() => addProduct(value)} className="App-btn-add">Add</button>
           </div>
         </div>
       ))}
